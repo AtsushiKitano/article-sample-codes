@@ -1,0 +1,13 @@
+- enabled: false
+  instance:
+    name: sample
+    machine_type: n1-standard-1
+    zone: asia-northeast1-b
+    subnetwork: sample
+    tags:
+      - ssh
+  boot_disk:
+    name: sample
+    size: "50"
+    interface: SCSI
+    image: ubuntu-os-cloud/ubuntu-2004-lts

@@ -1,0 +1,19 @@
+- name: sample
+  subnetworks:
+    - name: sample
+      cidr: 192.168.10.0/24
+      region: asia-northeast1
+  firewall:
+    - name: sample-ingress-ssh-from-internet
+      direction: INGRESS
+      tags:
+        - ssh
+      ranges:
+        - 0.0.0.0
+      priority: 1000
+      rules:
+        - type: allow
+          protocol: tcp
+          ports:
+            - "22"
+      log_config_metadata: EXCLUDE_ALL_METADATA
