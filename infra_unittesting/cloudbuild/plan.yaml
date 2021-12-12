@@ -8,14 +8,14 @@ steps:
     dir: 'infra_unittesting/src'
     name: 'hashicorp/terraform'
     env:
-      - TF_VAR_project: $PROJECT_ID
+      - 'TF_VAR_project=$PROJECT_ID'
     args: ['init']
 
   - id: 'terraform-init'
     dir: 'infra_unittesting/src'
     name: 'hashicorp/terraform'
     env:
-      - TF_VAR_project: $PROJECT_ID
+      - 'TF_VAR_project=$PROJECT_ID'
     args: ['plan']
 
   - id: 'testing environment configuration'
@@ -23,7 +23,7 @@ steps:
     name: 'us-central1-docker.pkg.dev/$PROJECT_ID/testing/cinc-gcp'
     entrypoint: '/bin/sh'
     env:
-      - TF_VAR_project: $PROJECT_ID
+      - 'TF_VAR_project=$PROJECT_ID'
     args:
       - -c
       - |

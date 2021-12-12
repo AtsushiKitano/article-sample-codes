@@ -3,5 +3,5 @@ steps:
     dir: 'infra_unittesting/test'
     name: 'us-central1-docker.pkg.dev/$PROJECT_ID/testing/cinc-gcp'
     env:
-      - TF_VAR_project: $PROJECT_ID
+      - 'TF_VAR_project=$PROJECT_ID'
     args: ['exec', '.']
