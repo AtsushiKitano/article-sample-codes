@@ -1,17 +1,17 @@
 steps:
-  - id: 'terraform-fmt-check'
+  - id: 'terraform fmt check'
     dir: 'infra_unittesting/src'
     name: 'hashicorp/terraform'
     args: ['fmt', '-check', '-diff']
 
-  - id: 'terraform-init'
+  - id: 'terraform init'
     dir: 'infra_unittesting/src'
     name: 'hashicorp/terraform'
     env:
       - 'TF_VAR_project=$PROJECT_ID'
     args: ['init']
 
-  - id: 'terraform-init'
+  - id: 'terraform plan'
     dir: 'infra_unittesting/src'
     name: 'hashicorp/terraform'
     env:
