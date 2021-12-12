@@ -11,7 +11,7 @@ steps:
     name: 'hashicorp/terraform'
     env:
       - 'TF_VAR_project=$PROJECT_ID'
-    args: ['init', '-migrate-state']
+    args: ['init']
 
   - id: 'terraform plan'
     dir: 'infra_unittesting/src'
