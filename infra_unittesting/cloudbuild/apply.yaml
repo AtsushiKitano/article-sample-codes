@@ -8,7 +8,7 @@ steps:
     dir: 'src'
     name: 'hashicorp/terraform'
     env:
-      - TF_VAR_project: $PROJECT_ID
+      - 'TF_VAR_project=$PROJECT_ID'
     args: ['init']
 
   - id: 'terraform-init'
