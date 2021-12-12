@@ -11,7 +11,7 @@ steps:
     name: 'hashicorp/terraform'
     env:
       - 'TF_VAR_project=$PROJECT_ID'
-    args: ['init']
+    args: ['init', '-reconfigure']
 
   - id: 'terraform plan'
     dir: 'infra_unittesting/src'
