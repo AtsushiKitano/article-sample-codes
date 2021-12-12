@@ -4,13 +4,14 @@ locals {
   config_files = {
     gce     = "gce.yaml"
     network = "networks.yaml"
-    project = "project.yaml"
   }
 
   gce_configs     = yamldecode(file(join("/", [local.config_file_path, local.config_files.gce])))
   network_configs = yamldecode(file(join("/", [local.config_file_path, local.config_files.network])))
-  project         = yamldecode(file(join("/", [local.config_file_path, local.config_files.project])))
+  project         = var.project
 }
+
+variable "project" {}
 
 module "network" {
   for_each = { for v in local.network_configs : v.name => v }

@@ -5,7 +5,7 @@ require_relative("../libs/gce")
 
 networks = YAML.load_file("../config/networks.yaml")
 gces = YAML.load_file("../config/gce.yaml")
-project = YAML.load_file("../config/project.yaml")
+project = ENV['TF_VAR_project']
 
 control "sample" do
   actual_infos = get_infos(project)
