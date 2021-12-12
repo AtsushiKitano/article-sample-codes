@@ -7,7 +7,9 @@ steps:
     args: ['fmt', '-check', '-diff']
 
   - id: 'terraform init'
-    dir: 'src'
+    dir: 'infra_unittesting/src'
+    env:
+      - 'TF_VAR_project=$PROJECT_ID'
     name: 'hashicorp/terraform'
     args: ['init']
 
