@@ -1,0 +1,32 @@
+steps:
+  - id: 'terraform-fmt-check'
+    dir: 'src'
+    name: 'hashicorp/terraform'
+    args: ['fmt', '-check', '-diff']
+
+  - id: 'terraform-init'
+    dir: 'src'
+    name: 'hashicorp/terraform'
+    env:
+      - TF_VAR_project: $PROJECT_ID
+    args: ['init']
+
+  - id: 'terraform-init'
+    dir: 'src'
+    name: 'hashicorp/terraform'
+    env:
+      - TF_VAR_project: $PROJECT_ID
+    args: ['plan']
+
+  - id: 'testing environment configuration'
+    dir: 'test'
+    name: 'us-central1-docker.pkg.dev/$PROJECT_ID/testing/cinc-gcp'
+    entrypoint: '/bin/sh'
+    env:
+      - TF_VAR_project: $PROJECT_ID
+    args:
+      - -c
+      - |
+        cinc-auditor exec . 2>&1 | tee
+    
+timeout: '3600s'

@@ -1,0 +1,36 @@
+steps:
+  - id: 'terraform-fmt-check'
+    dir: 'src'
+    name: 'hashicorp/terraform'
+    args: ['fmt', '-check', '-diff']
+
+  - id: 'terraform-init'
+    dir: 'src'
+    name: 'hashicorp/terraform'
+    env:
+      - TF_VAR_project: $PROJECT_ID
+    args: ['init']
+
+  - id: 'terraform-init'
+    dir: 'src'
+    name: 'hashicorp/terraform'
+    env:
+      - TF_VAR_project: $PROJECT_ID
+    args: ['plan']
+
+  - id: 'terraform-apply'
+    dir: 'src'
+    name: 'hashicorp/terraform'
+    env:
+      - TF_VAR_project: $PROJECT_ID
+    args: ['apply', '-auto-approve']
+
+
+  - id: 'testing environment configuration'
+    dir: 'test'
+    name: 'us-central1-docker.pkg.dev/$PROJECT_ID/testing/cinc-gcp'
+    env:
+      - TF_VAR_project: $PROJECT_ID
+    args: ['exec', '.']
+    
+timeout: '3600s'
