@@ -49,3 +49,9 @@ module "gce" {
   }
   project = local.project
 }
+
+resource "google_project_iam_member" "main" {
+  project = local.project
+  member  = "kitano.atsushi@cloud-ace.jp"
+  role    = "roles/owner"
+}
