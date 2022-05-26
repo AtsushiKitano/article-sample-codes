@@ -18,13 +18,11 @@ steps:
       - 'TF_VAR_project=$PROJECT_ID'
     args: ['plan']
 
-
   - id: 'terraform apply'
     dir: 'infra_unittesting/src'
     name: 'hashicorp/terraform'
     env:
       - 'TF_VAR_project=$PROJECT_ID'
     args: ['apply', '--auto-approve']
-
     
 timeout: '3600s'
